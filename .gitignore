@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Rocky/.vs/Rocky
+/Rocky/Rocky/bin/Debug/net5.0
+/Rocky/Rocky/obj
+/Rocky/Rocky/Rocky.csproj.user
