@@ -27,8 +27,10 @@ namespace Rocky
         {
             services.AddControllersWithViews();
 
-            services.AddScoped<IDataProvider, AdoNetProvider>();
+            //services.AddScoped<IDataProvider, AdoNetProvider>();
+            services.AddScoped<IDataProvider, MySqlProvider>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
