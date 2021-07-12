@@ -27,9 +27,11 @@ namespace Rocky
         {
             services.AddControllersWithViews();
 
-            //services.AddScoped<IDataProvider, AdoNetProvider>();
-            services.AddScoped<IDataProvider, MySqlProvider>();
+            services.AddScoped<IDataProvider, AdoNetProvider>();
+            //services.AddScoped<IDataProvider, MySqlProvider>();
+
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<IInvoiceService, InvoiceService>();
             services.AddScoped<ICustomerService, CustomerService>();
         }
 

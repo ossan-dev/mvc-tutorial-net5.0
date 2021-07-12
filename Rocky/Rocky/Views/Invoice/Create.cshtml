@@ -1,0 +1,52 @@
+﻿@model Rocky.Models.InvoiceHeader
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Add Invoice Header</h2>
+        </div>
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="InvoiceNo"></label>
+                <input asp-for="InvoiceNo" type="text" class="form-control" placeholder="Invoice No">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="CreatedAt"></label>
+                <input asp-for="CreatedAt" type="date" class="form-control" placeholder="dd/mm/yyyy">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="CustomerNo"></label>
+                <input asp-for="CustomerNo" type="text" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount" type="text" class="form-control" placeholder="0.00">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-row col-md-6 ml-4">
+                <input asp-for="IsPaid" class="form-check-input" type="checkbox">
+                <label class="form-check-label" asp-for="IsPaid"></label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-8 row">
+                <div class="col">
+                    <input type="submit" class="btn btn-info w-100" name="create" value="Create" />
+                </div>
+                <div class="col">
+                    <a asp-controller="Invoice" asp-action="Index" class="btn btn-success">
+                        @* in this case the controller name is optional as u are dealing with actions within the same controller *@
+                        Back
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
