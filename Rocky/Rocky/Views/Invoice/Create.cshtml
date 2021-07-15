@@ -1,4 +1,11 @@
 ﻿@model Rocky.Models.InvoiceHeader
+@*@if (ViewBag.Customers != null)
+    {
+        foreach (var customer in ViewBag.Customers)
+        {
+            <p>@customer.CustomerId - @customer.CustomerName</p>
+        }
+    }*@
 
 <form method="post" asp-action="Create">
     <div class="border p-3">
@@ -19,8 +26,9 @@
         </div>
         <div class="form-group">
             <div class="form-row col-md-6">
-                <label asp-for="CustomerNo"></label>
-                <input asp-for="CustomerNo" type="text" class="form-control">
+                <label asp-for="CustomerId"></label>
+                <input type="text" id="txtCustomer" name="CustomerName" class="form-control"/>
+                <input type="hidden" id="hfCustomer" name="CustomerId" asp-for="CustomerId"/>
             </div>
         </div>
         <div class="form-group">
@@ -42,7 +50,7 @@
                 </div>
                 <div class="col">
                     <a asp-controller="Invoice" asp-action="Index" class="btn btn-success">
-                        @* in this case the controller name is optional as u are dealing with actions within the same controller *@
+                        @*in this case the controller name is optional as u are dealing with actions within the same controller*@
                         Back
                     </a>
                 </div>
@@ -50,3 +58,39 @@
         </div>
     </div>
 </form>
+
+@section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="https://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+          rel="Stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            $("#txtCustomer").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Customer/Autocomplete/',
+                        data: { "expr": request.term },
+                        type: "POST",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hfCustomer").val(i.item.val);
+                    //console.log(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+    </script>
+}

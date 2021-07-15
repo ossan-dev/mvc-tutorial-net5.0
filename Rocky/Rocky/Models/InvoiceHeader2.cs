@@ -13,8 +13,8 @@ namespace Rocky.Models
         public string InvoiceNo { get; set; }
         [DisplayName("Data creazione")]
         public DateTime CreatedAt { get; set; }
-        [DisplayName("Numero cliente")]
-        public string CustomerNo { get; set; }
+        [DisplayName("ID cliente")]
+        public int CustomerId { get; set; }
         [DisplayName("Importo")]
         public decimal Amount { get; set; }
         [DisplayName("Già pagata?")]

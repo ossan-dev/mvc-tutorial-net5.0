@@ -11,10 +11,12 @@ namespace Rocky.Controllers
     public class InvoiceController : Controller
     {
         private readonly IInvoiceService _invoiceService;
+        private readonly ICustomerService _customerService;
 
-        public InvoiceController(IInvoiceService invoiceService)
+        public InvoiceController(IInvoiceService invoiceService, ICustomerService customerService)
         {
             _invoiceService = invoiceService;
+            _customerService = customerService;
         }
         public IActionResult Index()
         {
@@ -24,6 +26,8 @@ namespace Rocky.Controllers
         // GET for create action
         public IActionResult Create()
         {
+            //var customers = _customerService.GetCustomerViewModels();
+            //ViewBag.Customers = customers;
             return View();
         }
         

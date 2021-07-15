@@ -21,5 +21,14 @@ namespace Rocky.Controllers
             var customers = _customerService.GetCustomers();
             return View(customers);
         }
+
+        [HttpPost]
+        public JsonResult Autocomplete(string expr)
+        {
+            var customers = _customerService.GetCustomersBySubstring(expr);
+
+            var raw = customers.Select(x => new { val = x.CustomerId, label = x.CustomerName }).ToList();
+            return Json(raw);
+        }
     }
 }
