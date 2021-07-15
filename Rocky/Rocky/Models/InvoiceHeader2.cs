@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Rocky.Models
 {
-    public class InvoiceHeader
+    public class InvoiceHeader2
     {
         public int Id { get; set; }
-        [DisplayName("Invoice No")]
+        [DisplayName("Numero fattura")]
         public string InvoiceNo { get; set; }
-        [DisplayName("Created At")]
+        [DisplayName("Data creazione")]
         public DateTime CreatedAt { get; set; }
-        [DisplayName("Customer No")]
+        [DisplayName("Numero cliente")]
         public string CustomerNo { get; set; }
-        
+        [DisplayName("Importo")]
         public decimal Amount { get; set; }
-        [DisplayName("Is it paid?")]
+        [DisplayName("Già pagata?")]
         public bool IsPaid { get; set; }
     }
 }

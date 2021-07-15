@@ -1,0 +1,65 @@
+﻿@model Rocky.Models.InvoiceHeader2
+
+<form method="post" asp-action="Create">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h2 class="text-info pl-3">Aggiungi testata fattura</h2>
+        </div>
+
+        @* Invoice No *@
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="InvoiceNo"></label>
+                <input asp-for="InvoiceNo" type="text" class="form-control" placeholder="Invoice No"/>
+            </div>
+        </div>
+
+        @* Created At *@
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="CreatedAt"></label>
+                <input asp-for="CreatedAt" type="date" class="form-control" placeholder="dd/mm/yyyy"/>
+            </div>
+        </div>
+
+        @* Customer No *@
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="CustomerNo"></label>
+                <input asp-for="CustomerNo" type="text" class="form-control"/>
+            </div>
+        </div>
+
+        @* Amount *@
+        <div class="form-group">
+            <div class="form-row col-md-6">
+                <label asp-for="Amount"></label>
+                <input asp-for="Amount" type="text" class="form-control" placeholder="0.00"/>
+            </div>
+        </div>
+
+        @* Is it paid? *@
+        <div class="form-group">
+            <div class="form-row col-md-6 ml-4">
+                <input asp-for="IsPaid" class="form-check-input" type="checkbox"/>
+                <label asp-for="IsPaid"></label>
+            </div>
+        </div>
+
+        @* buttons section *@
+        <div class="form-group">
+            <div class="col-8 row">
+                @* create btn *@
+                <div class="col">
+                    <input type="submit" class="btn btn-info w-100" name="create" value="Create"/>
+                </div>
+
+                @* back to index *@
+                <div class="col">
+                    <a asp-controller="InvoiceHeader2" asp-action="Index" class="btn btn-success">Back</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>

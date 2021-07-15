@@ -33,6 +33,7 @@ namespace Rocky
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<IInvoiceService, InvoiceService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IInvoiceHeader2Service, InvoiceHeader2Service>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

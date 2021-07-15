@@ -67,5 +67,30 @@ namespace Rocky.DB
 
             return affectedRows;
         }
+
+        public int ExecuteCommand2(string commandText)
+        {
+            int affectedRows = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(_connectionString))
+                {
+                    connection.Open();
+                    using (SqlCommand command = new SqlCommand(commandText, connection))
+                    {
+                        affectedRows = command.ExecuteNonQuery();
+                    }
+
+                    connection.Close();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return affectedRows;
+        }
     }
 }
