@@ -18,7 +18,7 @@ namespace Rocky.Services
 
         public int AddInvoiceHeader(InvoiceHeader2 invoiceHeader2)
         {
-            var commandText = $"INSERT INTO invoice_header (invoice_no, created_at, customer_no, amount, is_paid) VALUES ('{invoiceHeader2.InvoiceNo}', '{invoiceHeader2.CreatedAt}', '{invoiceHeader2.CustomerNo}', {invoiceHeader2.Amount}, {(invoiceHeader2.IsPaid ? 1 : 0)})";
+            var commandText = $"INSERT INTO invoice_header (invoice_no, created_at, customer_id, amount, is_paid) VALUES ('{invoiceHeader2.InvoiceNo}', '{invoiceHeader2.CreatedAt}', {invoiceHeader2.CustomerId}, {invoiceHeader2.Amount}, {(invoiceHeader2.IsPaid ? 1 : 0)})";
 
             var affectedRows = _provider.ExecuteCommand2(commandText);
 

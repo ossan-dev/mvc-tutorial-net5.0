@@ -36,5 +36,43 @@ namespace Rocky.Services
 
             return customers;
         }
+
+        //public IEnumerable<CustomerViewModel> GetCustomerViewModels()
+        //{
+        //    List<CustomerViewModel> customers = new();
+        //    var queryText = @"SELECT id, name FROM customer";
+        //    var dt = _dataProvider.GetData(queryText);
+        //    foreach (DataRow item in dt.Rows)
+        //    {
+        //        var customer = new CustomerViewModel
+        //        {
+        //            CustomerId = Convert.ToInt32(item.ItemArray[0]),
+        //            CustomerName = Convert.ToString(item.ItemArray[1])
+        //        };
+
+        //        customers.Add(customer);
+        //    }
+
+        //    return customers;
+        //}
+
+        public IEnumerable<CustomerViewModel> GetCustomersBySubstring(string expr)
+        {
+            List<CustomerViewModel> customers = new();
+            var queryText = $"SELECT id, name FROM customer WHERE name LIKE '%{expr}%'";
+            var dt = _dataProvider.GetData(queryText);
+            foreach (DataRow item in dt.Rows)
+            {
+                var customer = new CustomerViewModel
+                {
+                    CustomerId = Convert.ToString(item.ItemArray[0]),
+                    CustomerName = Convert.ToString(item.ItemArray[1])
+                };
+
+                customers.Add(customer);
+            }
+
+            return customers;
+        }
     }
 }
